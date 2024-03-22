@@ -4,9 +4,9 @@ class Lead {
     private size: number;
     
     public constructor(thickness: number, hardness: string, size: number) {
-        this.thickness = thickness;
-        this.hardness = hardness;
-        this.size = size;
+        this.thickness = thickness; //calibre
+        this.hardness = hardness; 
+        this.size = size; 
     }
 
     public usagePerSheet(): number {
@@ -57,23 +57,46 @@ class Pencil {
     public hasLead(): boolean {
         if(this.tip === null){
             return false
-        }
+        } else {
             return true
+        }
     }
 
+    //verifica se já tem grafite, verifica se o calibre é compatível, insere um grafite passando seus 3 atributos
     public insert(lead: Lead): boolean {
-       if(lead.getThickness() !== this.thickness){
-        console.log("fail: calibre incompativel")
+        if(this.hasLead()){
+        console.log("fail: ja existe grafite");
         return false
-       } 
-       this.tip = lead;
-       return true
-    }
+        } else if (lead.getThickness() != this.thickness){
+                console.log("fail: calibre incompativel")
+                return false
+        } else{
+            this.tip = lead;
+            return true
+        }
+    } 
+      
 
     public remove(): Lead | null {
+        if(!this.hasLead()){
+            console.log("fail: nao existe grafite")
+            return null //retorna vazio
+        } else {
+            this.tip = null;
+            return this.tip;
+        }
     }
 
     writePage(): void {
+        if(!this.hasLead()){
+            console.log("fail: nao existe grafite")
+            return
+        } 
+        if(this.tip.getSize() <= 10){
+            console.log("fail: tamanho insuficiente");
+            return
+        }
+       
     }
 
     public toString(): string {
