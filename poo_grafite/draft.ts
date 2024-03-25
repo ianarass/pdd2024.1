@@ -93,10 +93,16 @@ class Pencil {
             return
         } 
         if(this.tip.getSize() <= 10){
-            console.log("fail: tamanho insuficiente");
+             console.log("fail: tamanho insuficiente");
+             return
+        } if (this.tip.getSize() - this.tip.usagePerSheet(this.tip.getHardness()) < 10){
+            this.tip.setSize(10);
+            console.log("fail: folha incompleta");
             return
         }
-       
+        else {
+            this.tip.setSize(this.tip.getSize() - this.tip.usagePerSheet(this.tip.getHardness()));
+        }
     }
 
     public toString(): string {
