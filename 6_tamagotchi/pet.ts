@@ -70,7 +70,7 @@ class Pet {
     public setAge(value: number) {
         this.age = value;
     }
-
+    
     public toString(): string {
         return  `E:${this.energy}/${this.energyMax}` 
             + `, S:${this.hungry}/${this.hungryMax}` 
