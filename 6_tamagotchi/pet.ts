@@ -1,4 +1,3 @@
-
 class Pet {
     private energyMax: number;
     private hungryMax: number;
@@ -25,18 +24,51 @@ class Pet {
         this.age = 0;
         this.alive = true;
     }
+    
+    // teste 1-> Energia/Max, Saciedade/Max, Limpeza/Max, Diamantes, Idade
     public setEnergy(value: number) {
+        if(value <= 0){
+            this.energy = 0;
+            console.log("fail: pet morreu de fraqueza");
+            this.alive = false;
+        } else if (value > this.energyMax){
+            this.energy =this.energyMax;
+        } else{
+        this.energy = value;
+        }
     }
 
     public setHungry(value: number) {
+        if(value <= 0){
+            this.hungry = 0;
+            console.log("fail: pet morreu de fome");
+            this.alive = false;
+        } else if (value > this.hungryMax){
+            this.hungry =this.hungryMax;
+        } else{
+        this.hungry = value;
+            
+        }
+     
     }
 
     public setClean(value: number) {
+            if(value <= 0){
+            this.clean = 0;
+            this.alive = false;
+            console.log("fail: pet morreu de sujeira");
+            } else if (value > this.cleanMax){
+                this.clean = this.cleanMax;
+            } else{
+                this.clean = value
+            }
     }
 
     public setDiamonds(value: number) {
+        this.diamonds = value;
     }
     public setAge(value: number) {
+        this.age = value;
     }
 
     public toString(): string {

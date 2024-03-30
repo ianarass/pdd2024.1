@@ -3,19 +3,20 @@ class Pessoa {
     private name: string;
 
     public constructor(name: string, age: number) {
-        //todo
+        this.age = age;
+        this.name = name;
     }
+
     public getAge(): number {
-        //todo
-        return 0;
+        return this.age;
     }
+
     public getname(): string {
-        //todo
-        return "";
+        return this.name;
     }
+
     public toString(): string {
-        //todo
-        return "";
+        return `${this.name}:${this.age}`;
     }
 }
 
